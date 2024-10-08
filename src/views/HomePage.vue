@@ -69,35 +69,35 @@
           />
           自动化
         </div>
-        <div>
+        <div class="mt-[1vw]">
           <Icon
             icon="icon-park-solid:people-plus"
             style="color: black"
             class="text-[2vw] ml-[1.5vw] mt-[1vw]"
           />
         </div>
-        <div>
+        <div class="mt-[1vw]">
           <Icon
             icon="hugeicons:more-01"
             style="color: black"
             class="text-[2vw] ml-[1.5vw] mt-[1vw]"
           />
         </div>
-        <div>
+        <div class="mt-[1vw]">
           <Icon
             icon="majesticons:bell-line"
             style="color: black"
             class="text-[2vw] ml-[1.5vw] mt-[1vw]"
           />
         </div>
-        <div>
+        <div class="mt-[1vw]">
           <Icon
             icon="hugeicons:setup-01"
             style="color: black"
             class="text-[2vw] ml-[1.5vw] mt-[1vw]"
           />
         </div>
-        <div>
+        <div class="mt-[1vw]">
           <Icon
             icon="ph:question-light"
             style="color: black"
