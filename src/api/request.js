@@ -1,5 +1,8 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL: "https://gitee.com/oauth/token",
+const request = axios.create({
+  baseURL: "https://gitee.com",
+  timeout: 5000,
 });
+
+export default request;
