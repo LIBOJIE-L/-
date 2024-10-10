@@ -26,7 +26,7 @@
         show-password
       />
       <div class="text-[1.2vw] text-[#c9cad3] ml-[14.5vw] mt-[1.5vw]">
-        <el-checkbox value="Online activities" name="type">
+        <el-checkbox value="Online activities" v-model="checked2" name="type">
           我已阅读并同意<a class="text-[#4d72eb]">服务协议</a>和<a
             class="text-[#4d72eb]"
             >隐私政策</a
@@ -57,6 +57,7 @@ const userLoginInfo = ref({
   username: "1355563488@qq.com",
   password: "shengsi5151315",
 });
+const checked2 = ref(false);
 const router = useRouter();
 const loginHandle = async () => {
   const loginData = {
@@ -69,14 +70,30 @@ const loginHandle = async () => {
   };
   const [err, res] = await to(getAccessToken(loginData));
   console.log(err, res);
-  if (!err) {
+  if (res.statusText === "OK") {
+    if (checked2.value === true) {
+      ElNotification({
+        title: "成功",
+        message: "恭喜你，登录成功",
+        type: "success",
+      });
+      router.replace("/home");
+    } else {
+      ElNotification({
+        title: "错误",
+        message: "请确认服务协议以及隐私政策",
+        type: "error",
+      });
+    }
+  } else {
     ElNotification({
-      message: "恭喜你，登录成功",
-      type: "success",
+      title: "错误",
+      message: "登录失败，请重新登录",
+      type: "error",
     });
-    router.replace("/home");
   }
 };
+
 const data = ref([
   "../../src/images/appm3V1L6Y3C3podIGShCo686dXRRY4i.png",
   "../../src/images/app9KTBmXHMK2mtI9RHyzPDs-h0NXne1.png",
