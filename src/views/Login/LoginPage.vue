@@ -77,7 +77,7 @@ const loginHandle = async () => {
         message: "恭喜你，登录成功",
         type: "success",
       });
-      router.replace("/home");
+      router.replace("/nav");
     } else {
       ElNotification({
         title: "错误",

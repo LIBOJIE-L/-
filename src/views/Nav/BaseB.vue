@@ -916,11 +916,13 @@
       </div>
     </div>
   </div>
-  <button
-    class="w-[10vw] h-[3vw] bg-black text-center ml-[41vw] mt-[2vw] text-[#ffffff] rounded-[5px]"
+  <router-link to="/setup">
+    <button
+      class="w-[10vw] h-[3vw] bg-black text-center ml-[41vw] mt-[2vw] text-[#ffffff] rounded-[5px]"
+    >
+      创建代码仓库
+    </button></router-link
   >
-    创建代码仓库
-  </button>
 </template>
 <script setup>
 import { Icon } from "@iconify/vue/dist/iconify.js";

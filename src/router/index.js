@@ -4,6 +4,10 @@ import LoginPage from "../views/Login/LoginPage.vue";
 import BaseA from "../views/Nav/BaseA.vue";
 import BaseB from "../views/Nav/BaseB.vue";
 import BaseC from "../views/Nav/BaseC.vue";
+import NavPage from "../views/Nav/NavPage.vue";
+import FoundHouse from "../views/setup/FoundHouse.vue";
+import component from "element-plus/es/components/tree-select/src/tree-select-option.mjs";
+import WorkBench from "../views/right/WorkBench.vue";
 
 // 定义路由
 const routes = [
@@ -12,23 +16,55 @@ const routes = [
     redirect: "/login",
   },
   {
-    path: "/home",
-    component: HomePage,
+    path: "/nav",
+    component: NavPage,
     children: [
       {
-        path: "/basea",
-        component: BaseA,
+        path: "/home",
+        component: HomePage,
+        children: [
+          {
+            path: "/basea",
+            component: BaseA,
+          },
+          {
+            path: "/baseb",
+            component: BaseB,
+          },
+          {
+            path: "/basec",
+            component: BaseC,
+          },
+        ],
       },
       {
-        path: "/baseb",
-        component: BaseB,
+        path: "/work",
+        component: WorkBench,
       },
       {
-        path: "/basec",
-        component: BaseC,
+        path: "/setup",
+        component: FoundHouse,
       },
     ],
   },
+  // {
+  //   path: "/home",
+  //   component: HomePage,
+  //   children: [
+  //     {
+  //       path: "/basea",
+  //       component: BaseA,
+  //     },
+  //     {
+  //       path: "/baseb",
+  //       component: BaseB,
+  //     },
+  //     {
+  //       path: "/basec",
+  //       component: BaseC,
+  //     },
+  //   ],
+  // },
   {
     path: "/login",
     component: LoginPage,
