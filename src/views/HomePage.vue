@@ -13,20 +13,29 @@
           <router-link to="/login">登录</router-link></el-header
         >
         <el-main>
-          <div>
-            <router-link
-              to="/basea"
-              class="w-[6vw] h-[3vw] inline-block text-[1.3vw] focus:border-b-2 border-[#306fde] text-center"
-              >最近访问</router-link
-            ><router-link
-              to="/baseb"
-              class="w-[6vw] h-[3vw] inline-block text-[1.3vw] focus:border-b-2 border-[#306fde] text-center"
-              >全部仓库</router-link
-            ><router-link
-              to="/basec"
-              class="w-[6vw] h-[3vw] inline-block text-[1.3vw] focus:border-b-2 border-[#306fde] text-center"
-              >开源仓库</router-link
-            >
+          <div class="flex justify-between">
+            <div>
+              <router-link
+                to="/basea"
+                class="w-[6vw] h-[3vw] inline-block text-[1.3vw] focus:border-b-2 border-[#306fde] text-center"
+                >最近访问</router-link
+              ><router-link
+                to="/baseb"
+                class="w-[6vw] h-[3vw] inline-block text-[1.3vw] focus:border-b-2 border-[#306fde] text-center"
+                >全部仓库</router-link
+              ><router-link
+                to="/basec"
+                class="w-[6vw] h-[3vw] inline-block text-[1.3vw] focus:border-b-2 border-[#306fde] text-center"
+                >开源仓库</router-link
+              >
+            </div>
+            <div>
+              <button
+                class="w-[8vw] h-[2vw] bg-black text-center text-[#ffffff] rounded-[5px]"
+              >
+                创建代码仓库
+              </button>
+            </div>
           </div>
           <hr />
           <div><router-view></router-view></div>

@@ -7,7 +7,7 @@
     版本发布可以用来标记、发布代码版本。
   </div>
   <div class="flex justify-around">
-    <div>
+    <div class="pl-[17vw]">
       <svg
         width="168"
         height="128"
@@ -293,6 +293,10 @@
       </div>
       <div class="text-[0.8vw] text-center text-[#7d8594]">记录</div>
     </div>
+    <Icon
+      icon="fluent:arrow-right-16-filled"
+      class="w-[2vw] h-[2vw] text-gray-400 mt-[4vw]"
+    />
     <div>
       <svg
         width="168"
@@ -642,7 +646,11 @@
       </div>
       <div class="text-[0.8vw] text-center text-[#7d8594]">Review变更内容</div>
     </div>
-    <div>
+    <Icon
+      icon="fluent:arrow-right-16-filled"
+      class="w-[2vw] h-[2vw] text-gray-400 mt-[4vw]"
+    />
+    <div class="pr-[17vw]">
       <svg
         width="168"
         height="128"
@@ -914,3 +922,6 @@
     创建代码仓库
   </button>
 </template>
+<script setup>
+import { Icon } from "@iconify/vue/dist/iconify.js";
+</script>
