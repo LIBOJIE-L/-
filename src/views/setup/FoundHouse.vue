@@ -56,7 +56,7 @@
         </div>
         <div class="ml-[1vw]">
           <div class="text-[1vw] font-semibold mt-[1vw]">初始化仓库</div>
-          <div>
+          <div class="flex flex-col">
             <el-checkbox label="生成README文件" value="Value A" />
             <el-checkbox label="添加.gitignore文件" value="Value B" />
             <el-checkbox
