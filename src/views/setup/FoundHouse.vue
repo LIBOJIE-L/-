@@ -37,7 +37,9 @@
               style="max-width: 40vw"
               placeholder="仓库名称只支持字母、数字、下划线(_)、中划线(-)和(.)的组合"
             >
-              <template #prepend>GIT 仓库</template>
+              <template #prepend
+                ><Icon icon="devicon:git" class="mr-[7px]" />GIT 仓库</template
+              >
             </el-input>
           </div>
         </div>
@@ -54,6 +56,38 @@
         </div>
         <div class="ml-[1vw]">
           <div class="text-[1vw] font-semibold mt-[1vw]">初始化仓库</div>
+          <div>
+            <el-checkbox label="生成README文件" value="Value A" />
+            <el-checkbox label="添加.gitignore文件" value="Value B" />
+            <el-checkbox
+              label="添加分支模型(仓库创建后将根据所选模型创建分支)"
+              value="Value disabled"
+              disabled
+            />
+          </div>
+        </div>
+        <div class="ml-[1vw]">
+          <div class="text-[1vw] font-semibold mt-[1vw]">是否开源</div>
+          <div class="w-[10vw]">
+            <el-radio-group v-model="radio1" class="flex justify-items-start">
+              <el-radio value="1" size="large"
+                >私有仓库(仅对仓库成员可见，仓库成员可访问仓库。)</el-radio
+              >
+              <el-radio value="2" size="large">公开仓库</el-radio>
+            </el-radio-group>
+          </div>
+        </div>
+        <div class="ml-[1vw]">
+          <button
+            class="w-[6vw] h-[2vw] bg-black text-center mt-[1vw] text-[#ffffff] rounded-[4px]"
+          >
+            完成创建
+          </button>
+          <button
+            class="w-[4vw] h-[2vw] text-center mt-[1vw] rounded-[4px] border border-black ml-[1vw]"
+          >
+            取消
+          </button>
         </div>
       </el-main>
     </el-container>
@@ -65,4 +99,5 @@ import { ref } from "vue";
 const input = ref("");
 const input1 = ref("");
 const textarea = ref("");
+const radio1 = ref("1");
 </script>

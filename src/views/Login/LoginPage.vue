@@ -54,8 +54,8 @@ import { ElNotification } from "element-plus";
 import { useRouter } from "vue-router";
 
 const userLoginInfo = ref({
-  username: "1355563488@qq.com",
-  password: "shengsi5151315",
+  username: "2841284419@qq.com",
+  password: "Lbj813322",
 });
 const checked2 = ref(false);
 const router = useRouter();
