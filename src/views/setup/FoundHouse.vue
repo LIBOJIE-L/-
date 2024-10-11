@@ -8,32 +8,40 @@
       >
       <el-main>
         <div class="flex">
-          <Icon icon="emojione:left-arrow" class="text-[2vw] ml-[2vw]" />
+          <Icon
+            icon="emojione:left-arrow"
+            class="text-[2vw] ml-[2vw]"
+            @click="BackHome"
+          />
           <div class="text-[1.3vw] font-medium ml-[1vw]">创建仓库</div>
         </div>
         <div class="ml-[1vw]">
           <div class="text-[1vw] font-semibold mt-[1vw]">
             所属项目<span class="text-[red]">*</span>
           </div>
-          <el-input
-            v-model="input"
-            style="width: 22vw"
-            placeholder="所属项目"
-            class="mt-[0.5vw]"
-          />
+          <div class="w-[20vw]">
+            <el-select
+              v-model="input.project"
+              placeholder="所属项目"
+              class="mt-[0.5vw]"
+            >
+              <el-option label="项目一" value="shanghai" />
+              <el-option label="项目二" value="beijing" />
+            </el-select>
+          </div>
         </div>
         <div class="ml-[1vw]">
           <div class="flex">
             <div class="text-[1vw] font-semibold mt-[1vw]">
               仓库类型<span class="text-[red]">*</span>
             </div>
-            <div class="text-[1vw] font-semibold mt-[1vw] ml-[2vw]">
+            <div class="text-[1vw] font-semibold mt-[1vw] ml-[3.2vw]">
               仓库名称<span class="text-[red]">*</span>
             </div>
           </div>
           <div class="mt-[0.5vw]">
             <el-input
-              v-model="input1"
+              v-model="input.name"
               style="max-width: 40vw"
               placeholder="仓库名称只支持字母、数字、下划线(_)、中划线(-)和(.)的组合"
             >
@@ -46,7 +54,7 @@
         <div class="ml-[1vw]">
           <div class="text-[1vw] font-semibold mt-[1vw]">仓库描述</div>
           <el-input
-            v-model="textarea"
+            v-model="input.describe"
             style="width: 50vw"
             placeholder="请输入仓库描述"
             :autosize="{ minRows: 2, maxRows: 4 }"
@@ -57,8 +65,8 @@
         <div class="ml-[1vw]">
           <div class="text-[1vw] font-semibold mt-[1vw]">初始化仓库</div>
           <div class="flex flex-col">
-            <el-checkbox label="生成README文件" value="Value A" />
-            <el-checkbox label="添加.gitignore文件" value="Value B" />
+            <el-checkbox label="生成README文件" v-model="input.readme" />
+            <el-checkbox label="添加.gitignore文件" v-model="input.gitignore" />
             <el-checkbox
               label="添加分支模型(仓库创建后将根据所选模型创建分支)"
               value="Value disabled"
@@ -69,7 +77,10 @@
         <div class="ml-[1vw]">
           <div class="text-[1vw] font-semibold mt-[1vw]">是否开源</div>
           <div class="w-[10vw]">
-            <el-radio-group v-model="radio1" class="flex justify-items-start">
+            <el-radio-group
+              v-model="input.radio"
+              class="flex justify-items-start"
+            >
               <el-radio value="1" size="large"
                 >私有仓库(仅对仓库成员可见，仓库成员可访问仓库。)</el-radio
               >
@@ -80,6 +91,7 @@
         <div class="ml-[1vw]">
           <button
             class="w-[6vw] h-[2vw] bg-black text-center mt-[1vw] text-[#ffffff] rounded-[4px]"
+            @click="SubmitEvent"
           >
             完成创建
           </button>
@@ -95,9 +107,54 @@
 </template>
 <script lang="ts" setup>
 import { Icon } from "@iconify/vue/dist/iconify.js";
+import { getSetup } from "../../api";
 import { ref } from "vue";
-const input = ref("");
-const input1 = ref("");
-const textarea = ref("");
-const radio1 = ref("1");
+import { useRouter } from "vue-router";
+import { ElNotification } from "element-plus";
+import to from "await-to-js";
+
+const router = useRouter();
+const input = ref({
+  name: "",
+  describe: "",
+  project: "",
+  readme: false,
+  gitignore: "",
+  radio: true,
+});
+const BackHome = () => {
+  router.back();
+};
+const SubmitEvent = async () => {
+  if (input.value.name) {
+    if (input.value.project) {
+      const loginData = {
+        access_token: "29705308bcf82454486b005f922f9e2e",
+        name: input.value.name,
+        description: input.value.describe,
+        private: input.value.radio,
+        auto_init: input.value.readme,
+      };
+      ElNotification({
+        title: "成功",
+        message: "创建成功",
+        type: "success",
+      });
+      const [err, res] = await to(getSetup(loginData));
+      router.replace("/baseb");
+    } else {
+      ElNotification({
+        title: "错误",
+        message: "请选择所属项目",
+        type: "error",
+      });
+    }
+  } else {
+    ElNotification({
+      title: "错误",
+      message: "请填写仓库名",
+      type: "error",
+    });
+  }
+};
 </script>

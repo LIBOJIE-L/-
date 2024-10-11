@@ -6,7 +6,6 @@ import BaseB from "../views/Nav/BaseB.vue";
 import BaseC from "../views/Nav/BaseC.vue";
 import NavPage from "../views/Nav/NavPage.vue";
 import FoundHouse from "../views/setup/FoundHouse.vue";
-import component from "element-plus/es/components/tree-select/src/tree-select-option.mjs";
 import WorkBench from "../views/right/WorkBench.vue";
 
 // 定义路由
@@ -20,9 +19,17 @@ const routes = [
     component: NavPage,
     children: [
       {
+        path: "",
+        component: HomePage,
+      },
+      {
         path: "/home",
         component: HomePage,
         children: [
+          {
+            path: "",
+            component: BaseB,
+          },
           {
             path: "/basea",
             component: BaseA,
