@@ -95,9 +95,9 @@ const loginHandle = async () => {
 };
 
 const data = ref([
-  "../../src/images/appm3V1L6Y3C3podIGShCo686dXRRY4i.png",
-  "../../src/images/app9KTBmXHMK2mtI9RHyzPDs-h0NXne1.png",
-  "../../src/images/appzx4bpYR9rpFdZULrF9EFycs2l-416.png",
+  "../../src/images/6.png",
+  "../../src/images/5.png",
+  "../../src/images/7.png",
 ]);
 </script>
 <style scoped>
